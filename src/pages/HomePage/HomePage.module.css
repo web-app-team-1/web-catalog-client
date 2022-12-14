@@ -4,7 +4,7 @@
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(10%, 1fr));
   grid-gap: 10px;
   background-color: #212529;
   color: #444;
