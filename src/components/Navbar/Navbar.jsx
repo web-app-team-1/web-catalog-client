@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSearchStore } from "../../stores/MovieStores";
 
 const Navbar = () => {
   const state = useSearchStore(state => state);
   const [search, setSearch] = useState('')
   const navigate = useNavigate()
+  const location = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +28,24 @@ const Navbar = () => {
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div onClick={() => navigate('/')}>
+              <li class="nav-item">
+                {
+                  location.pathname == '/'
+                    ? <a class="nav-link active" href="#">Movies</a>
+                    : <a class="nav-link" href="#">Movies</a>
+                }
+              </li>
+            </div>
+            <li class="nav-item">
+              <div onClick={() => navigate('/series')}>
+                {
+                  location.pathname == '/series'
+                    ? <a class="nav-link active" href="#">TV Series</a>
+                    : <a class="nav-link" href="#">TV Series</a>
+                }
+              </div>
+            </li>
           </ul>
           <form class="d-flex" role="search" onSubmit={handleSubmit}>
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={onChange}></input>

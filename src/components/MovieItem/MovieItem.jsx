@@ -4,11 +4,9 @@ import styles from './MovieItem.module.css'
 
 const baseImagePath = 'https://image.tmdb.org/t/p/w200';
 
-const MovieItem = ({ movie }) => {
-  const navigate = useNavigate()
-
+const MovieItem = ({ movie, onClick }) => {
   return (
-    <div className={styles['container']} onClick={() => navigate(`/movie/${movie.id}`)}>
+    <div className={styles['container']} onClick={onClick}>
       <img src={`${baseImagePath}${movie.poster_path}`} class="card-img rounded"></img>
     </div>
   )

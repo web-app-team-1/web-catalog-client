@@ -1,14 +1,14 @@
 import React from 'react';
 import MovieItem from '../../components/MovieItem/MovieItem';
 import { useSearchStore } from '../../stores/MovieStores';
-import { useSearchMovies } from './HomePage.hooks';
-import styles from './HomePage.module.css'
+import { useSearchSeries } from './SeriesPage.hooks';
+import styles from './SeriesPage.module.css'
 import { useNavigate } from 'react-router-dom';
 
-const HomePage = () => {
+const SeriesPage = () => {
   const navigate = useNavigate();
   const search = useSearchStore(state => state.search);
-  const { data, isLoading, isError } = useSearchMovies(search)
+  const { data, isLoading, isError } = useSearchSeries(search)
 
   if (isLoading || isError) {
     return (
@@ -25,7 +25,7 @@ const HomePage = () => {
         {
           data.map((movie, i) => {
             return <div className={styles['box']} key={i}>
-              <MovieItem movie={movie} onClick={() => navigate(`/movie/${movie.id}`)} />
+              <MovieItem movie={movie} onClick={() => navigate(`/series/${movie.id}`)} />
             </div>
           })
         }
@@ -34,4 +34,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage;
+export default SeriesPage;
